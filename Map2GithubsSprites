@@ -1,0 +1,12 @@
+# Get the Pokemon ID (pull from metadata)
+poke_id = document.get_meta_data_value("pokemon_image_url")
+
+if poke_id:
+    # Use the first value in the list
+    id_str = str(poke_id[0])
+    
+    # Construct the GitHub URL for high-res official artwork
+    github_artwork = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{id_str}.png"
+    
+    # Overwrite the scraped URL with the reliable GitHub URL
+    document.add_meta_data({"pokemon_image_url": github_artwork})
