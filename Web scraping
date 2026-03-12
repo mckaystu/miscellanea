@@ -1,0 +1,90 @@
+[
+  {
+    "name": "PK",
+    "exclude": [
+      {
+        "type": "CSS",
+        "path": "script"
+      },
+      {
+        "type": "CSS",
+        "path": "noscript"
+      },
+      {
+        "type": "CSS",
+        "path": "iframe"
+      },
+      {
+        "type": "CSS",
+        "path": "menu"
+      },
+      {
+        "type": "CSS",
+        "path": "nav"
+      },
+      {
+        "type": "CSS",
+        "path": "header"
+      },
+      {
+        "type": "CSS",
+        "path": "footer"
+      },
+      {
+        "type": "CSS",
+        "path": ".menu"
+      },
+      {
+        "type": "CSS",
+        "path": ".nav"
+      },
+      {
+        "type": "CSS",
+        "path": ".navigation"
+      },
+      {
+        "type": "CSS",
+        "path": ".navbar"
+      },
+      {
+        "type": "CSS",
+        "path": ".header"
+      },
+      {
+        "type": "CSS",
+        "path": ".footer"
+      },
+      {
+        "type": "CSS",
+        "path": ".sidebar"
+      },
+      {
+        "type": "CSS",
+        "path": ".ad"
+      },
+      {
+        "type": "CSS",
+        "path": ".popup"
+      }
+    ],
+    "for": {
+      "urls": [
+        ".*"
+      ]
+    },
+    "metadata": {
+      "poketype": {
+        "type": "CSS",
+        "path": ".vitals-table tr:nth-of-type(2) td a.type-icon::text"
+      },
+      "raw_generation_string": {
+        "type": "CSS",
+        "path": "main p:first-of-type::text"
+      },
+      "pokemon_image_url": {
+        "type": "CSS",
+        "path": "img[src*='/artwork/']::attr(src)"
+      }
+    }
+  }
+]
