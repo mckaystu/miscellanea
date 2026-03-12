@@ -1,0 +1,12 @@
+Crawling Rules: 
+Starting URL: https://pokemondb.net/pokedex/national
+
+Exclusions:
+matches regex: https://pokemondb.net/type/*
+matches regex: https://pokemondb.net/pokebase/.*
+matches regex: https://pokemondb.net/move/.*
+matches regex: https://pokemondb.net/item/.*
+matches regex: https://pokemondb.net/pokedex/all
+
+Inclusions:
+matches regex: https://pokemondb.net/pokedex/(national|bulbasaur|ivysaur|exeggcute)$
