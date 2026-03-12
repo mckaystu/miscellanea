@@ -1,0 +1,96 @@
+<script type="module" src="https://unpkg.com/@coveo/atomic@latest/dist/atomic/atomic.esm.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@coveo/atomic@latest/dist/atomic/themes/coveo.css"/>
+
+<style>
+  /* 2. CSS FOR TYPE COLOR CODING */
+  /* This targets the 'poketype' field values inside the search results */
+  atomic-result-badge[field="poketype"]::part(badge-root) {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    border: none;
+  }
+
+  /* Dynamic Colors based on the text content */
+  atomic-result-badge[field="poketype"][value="Grass"]::part(badge-root) { background-color: #78C850; }
+  atomic-result-badge[field="poketype"][value="Fire"]::part(badge-root) { background-color: #F08030; }
+  atomic-result-badge[field="poketype"][value="Water"]::part(badge-root) { background-color: #6890F0; }
+  atomic-result-badge[field="poketype"][value="Psychic"]::part(badge-root) { background-color: #F85888; }
+  atomic-result-badge[field="poketype"][value="Poison"]::part(badge-root) { background-color: #A040A0; }
+  atomic-result-badge[field="poketype"][value="Electric"]::part(badge-root) { background-color: #F8D030; color: black; }
+  /* Add more types as needed following this pattern */
+
+  /* General Layout Tweak */
+  .main-area { display: flex; gap: 20px; padding: 20px; }
+  atomic-facet-manager { width: 250px; }
+</style>
+
+<atomic-search-interface 
+  organization-id="YOUR_ORG_ID" 
+  api-key="YOUR_API_KEY"
+  pipeline="default"
+>
+  <atomic-search-layout>
+    
+    <atomic-layout-section section="search">
+      <atomic-search-box></atomic-search-box>
+    </atomic-layout-section>
+
+    <div class="main-area">
+      <atomic-layout-section section="facets">
+        <atomic-facet-manager>
+          <atomic-facet field="pokemongeneration" label="Generation" display-values-as="checkbox"></atomic-facet>
+          <atomic-facet field="poketype" label="Pokemon Type" display-values-as="link"></atomic-facet>
+        </atomic-facet-manager>
+      </atomic-layout-section>
+
+      <atomic-layout-section section="main">
+        
+        <atomic-layout-section section="status">
+          <atomic-breadbox></atomic-breadbox>
+          <atomic-query-summary></atomic-query-summary>
+          <atomic-sort-dropdown>
+            <atomic-sort-expression label="Relevance" expression="relevancy" />
+            <atomic-sort-expression label="Newest" expression="date descending" />
+          </atomic-sort-dropdown>
+        </atomic-layout-section>
+
+        <atomic-result-list display="grid" image-size="large">
+          <atomic-result-template>
+            <template>
+              <style>
+                .card-container { padding: 10px; text-align: center; }
+                .gen-text { font-size: 0.8rem; color: #666; margin-bottom: 5px; }
+              </style>
+              
+              <div class="card-container">
+                <atomic-result-section-visual>
+                  <atomic-result-image field="pokemon_image_url"></atomic-result-image>
+                </atomic-result-section-visual>
+                
+                <atomic-result-section-title>
+                  <atomic-result-link></atomic-result-link>
+                </atomic-result-section-title>
+                
+                <atomic-result-section-excerpt>
+                  <div class="gen-text">
+                    <atomic-result-text field="pokemongeneration"></atomic-result-text>
+                  </div>
+                  <atomic-result-badge field="poketype"></atomic-result-badge>
+                </atomic-result-section-excerpt>
+              </div>
+            </template>
+          </atomic-result-template>
+        </atomic-result-list>
+
+        <atomic-query-error></atomic-query-error>
+        <atomic-no-results></atomic-no-results>
+      </atomic-layout-section>
+    </div>
+
+    <atomic-layout-section section="pagination">
+      <atomic-pager></atomic-pager>
+    </atomic-layout-section>
+
+  </atomic-search-layout>
+</atomic-search-interface>
