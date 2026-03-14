@@ -81,9 +81,17 @@
         "type": "CSS",
         "path": "main p:first-of-type::text"
       },
-      "pokemon_image_url": {
+      "pokemon_id": {
         "type": "CSS",
-        "path": "img[src*='/artwork/']::attr(src)"
+        "path": ".vitals-table tr:nth-child(1) td strong::text"
+      },
+      "pokemon_name": {
+        "type": "CSS",
+        "path": "h1::text"
+      },
+      "pokemon_species": {
+        "type": "CSS",
+        "path": "th:contains(\"Species\") + td::text"
       }
     }
   }
